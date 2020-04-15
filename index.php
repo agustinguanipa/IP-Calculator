@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Inicio | Agustin Guanipa</title>
-	<meta name="description" content="Agustin Guanipa">
+	<title>Inicio | Calculadora IP</title>
+	<meta name="description" content="Calculadora IP - Agustin Guanipa">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,7 +17,7 @@
 	<!--- jQuery --->
   <script src="libs/jquery/jquery-3.4.1.min.js" type="text/javascript"></script>
   <!--- jQuery Validation --->
-  <script type="text/javascript" src="libs/jquery-validation-1.19.0/lib/jquery-1.11.1.js"></script>
+  
   <script type="text/javascript" src="libs/jquery-validation-1.19.0/dist/jquery.validate.js"></script>
   <!--- jQuery Mask Plugin --->
   <script type="text/javascript" src="libs/jQuery-Mask-Plugin/dist/jquery.mask.js"></script>
@@ -26,7 +26,7 @@
   <script src="libs/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
   <!--- Bootstrap 4 UI E-Commerce --->
   <script src="libs/bootstrap-ecommerce-uikit/ui-ecommerce/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-  <script src="libs/bootstrap-ecommerce-uikit/ui-ecommerce/js/jquery-2.0.0.min.js" type="text/javascript"></script>
+ 
   <link href="libs/bootstrap-ecommerce-uikit/ui-ecommerce/css/bootstrap.css" rel="stylesheet" type="text/css"/>
   <link href="libs/bootstrap-ecommerce-uikit/ui-ecommerce/fonts/fontawesome/css/fontawesome-all.min.css" type="text/css" rel="stylesheet">
   <link href="libs/bootstrap-ecommerce-uikit/ui-ecommerce/plugins/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -41,37 +41,30 @@
 
 <!-- Header --->
 
-<header class="section-header">
+<header class="section-header" id="index">
 	<div class="index-background">
-	  <h2 class="card-title text-white" style="font-size: 40px;"><b>Agustin Guanipa</b></h2>
-    <p class="card-text text-white"><b>Desarrollo Web | Diseño Gráfico | Fotografía </b></p>
+	  <h4 class="card-title text-white" style="font-size: 40px;"><b>Calculadora IP</b></h4>
+    <p class="card-text text-white"><b>Redes</b></p>
 	</div>
-	
-	<nav class="navbar navbar-expand-sm bg-light navbar-primary sticky-top py-1">
+	<nav id="navbarNavDropdown" class="navbar navbar-expand-sm bg-light navbar-primary py-1" data-toggle="sticky-onscroll">
 		<a class="navbar-brand" href="index.php">
-	    <img src="imagen/Agustin-1-x-1-Rounded.png" width="30" height="30" class="d-inline-block align-top" alt="">
-	    Agustin <b>Guanipa</b>
+	    <img src="imagen/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+	    Calculadora <b>IP</b>
   	</a>
   	<button class="navbar-toggler bg-primary" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     	<span class="navbar-toggler-icon"></span>
     </button>
-  	<div id="navbarNavDropdown" class="navbar-collapse collapse">
+  	<div class="navbar-collapse collapse" id="navbarNavDropdown">
   		<ul class="navbar-nav ml-auto">
 	    	<li class="nav-item active">
-	      	<a class="nav-link" href="index.php"><b>Inicio</b></a>
+	      	<a class="nav-link" href="#index"><b>Inicio</b></a>
 	    	</li>
 	    	<li class="nav-item">
-	      	<a class="nav-link" href="paginas/sobre_mi.php"><b>Sobre Mí</b></a>
+	      	<a class="nav-link" href="#section1"><b>Introducción</b></a>
 	   	 	</li>
-		    <li class="nav-item">
-	      	<a class="nav-link" href="paginas/blog.php"><b>Blog</b></a>
+	   	 	<li class="nav-item">
+	      	<a class="nav-link" href="#section2"><b>Calculadora IP</b></a>
 	   	 	</li>
-		    <li class="nav-item">
-		      <a class="nav-link" href="paginas/portafolio.php"><b>Portafolio</b></a>
-		    </li>
-		    <li class="nav-item">
-		      <a class="nav-link" href="paginas/contacto.php"><b>Contacto</b></a>
-	    	</li>
 	  	</ul>
   	</div>
 	</nav>
@@ -79,88 +72,84 @@
 
 <!-- Main --->
 
-	<div class="jumbotron text-center" id="fondo_sobre_mi">
-	  <div class="container">
-	  	<h2 class="" style="color: #000000;"><b>Sobre Mí</b></h2>
+	<div class="jumbotron text-center" id="fondo_info">
+	  <div class="container" id="section1">
+	  	<h4 class="" style="color: #000000;"><b>Introducción</b></h4>
 	  	<hr class="my-4">
 	  	<div class="row">
-	  		<div class="col-sm-6 form-group">
-	  			<div>
-	      		<img src="imagen/Agustin-1-x-1-Rounded.png" alt="Foto Personal" height="225px">
-	    		</div>
-	  		</div>
-	  		<div class="col-sm-6 form-group">
-				<p class="titulo">Carlos Agustin Guanipa Alvarez</p>
+	  		<div class="col-sm-4 form-group">
+	  			<p class="titulo">IP's</p>
 		     	<p class="contenido">
-		     		22 Años.</br>
-		    		Venezolano.</br>
-		    		Estudiante de Ingeniería.</br>
+		     		Todos los dispositivos conectados a Internet poseen una dirección IP. Dada una dirección IP (IPv4) y una máscara de subred, es posible calcular la dirección de la subred a la que pertenece dicho dispositivo.
 		    	</p>
-	  			<div>
-	      		<a href="paginas/sobre_mi.php" class="btn btn-primary">Ver Más</a>
-	    		</div>
+	  			
+	  		</div>
+	  		<div class="col-sm-4 form-group">
+				<p class="titulo">Objetivos</p>
+		     	<p class="contenido">
+		     		<ul class="text-left">
+			     		<li>Identificar la dirección de la subred a la que pertenece una dirección IP (IPv4) con una determinada máscara de subred.</li>
+							<li>Representar en binario direcciones IP y máscaras de 32 bits.</li>
+							<li>Identificar el rango de direcciones asignables a los hosts que pertenecen a la subred identificada.</li>
+							<li>Calcular el número de direcciones IP disponibles en una red IPv4.</li>
+						</ul>
+		    	</p>
+	  		</div>
+	  		<div class="col-sm-4 form-group">
+	  			<p class="titulo">Instrucciones</p>
+		     	<p class="contenido">
+		     		<ul class="text-left">
+			     		<li>Introduce una dirección IP (IPv4) junto con la máscara de red (en formato decimal o mediante una longitud de prefijo).</li>
+			     		<li>Presiona Calcular.</li>
+			     		<li>Obtendrás la dirección de la subred a la que pertenece dicha dirección IP, la dirección de broadcast de dicha subred, la primera y última dirección IP asignable, y el número total de direcciones IP asignables en la subred.</li>
+			     	</ul>
+		    	</p>
 	  		</div>
 	  	</div>
 	  </div>
 	</div>
 
 	<div class="jumbotron text-center" style="margin-bottom:0; background-color: #FFFFFF;">
-	  <div class="container">
-	  	<h2 class="" style="color: #000000;"><b>Blog</b></h2>
+	  <div class="container" id="section2">
+	  	<h4 style="color: #000000;"><b>Calculadora IP</b></h4>
 	  	<hr class="my-4">
-	  	<?php
-        include("paginas/conexion.php");
-          $ReadSql = "SELECT * FROM tab_proy WHERE statu_proy = 1 ORDER BY ident_proy DESC LIMIT 3";
-          $res = mysqli_query($con, $ReadSql);
-      ?>
-	  	<div class="card-deck">
-	  		<?php
-          while($row = mysqli_fetch_assoc($res)){  
-        ?>
-        <div class="col col-lg-4">
-					<div class="card">
-					  <img class="card-img-fluid image-size-index" src="__DIR__ ../<?php echo $row['image_proy']; ?>" alt="Personales">
-					  <div class="card-body">
-					    <h4 class="card-title"><b><?php echo $row['nombr_proy']; ?></b></h4>
-					    <p class="card-text"><?php echo $row['desco_proy']; ?></p>
-						</div>
-						<div class="card-footer">
-			      	<p class="card-text float-left"><small class="text-muted"><?php echo $row['fecre_proy']; ?></small></p>
-		          <a href="paginas/publicacion_detalle.php?id=<?php echo $row['ident_proy']; ?>" class="btn btn-primary float-right"><i class="fa fa-eye"></i> Leer Más</a>
-			    	</div>
-					</div>
-				</div>
-				<?php
-          }
-        ?>
-			</div>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
+	  	<br>
 		</div>
-	</div>
-
-	<div class="jumbotron text-center" id="fondo_portafolio">
-	  <div class="container">
-	  	<h2 class="" style="color: #000000;"><b>Portafolio</b></h2>
-	  	<hr class="my-4">
-	  	<div class="row">
-	  		<div class="col-sm-6 form-group">
-				<p class="titulo">¡Conoce más acerca de mis Trabajos!</p>
-		     	<p class="contenido">
-		     		Fotografía y Vídeo,</br>
-		    		Diseño Gráfico,</br>
-		    		Social Marketing,</br>
-		    		y Mucho Más!</br>
-		    	</p>
-		    	<div>
-	      			<a href="paginas/portafolio.php" class="btn btn-primary">Ver Portafolio</a>
-	    		</div>
-	  		</div>
-	  		<div class="col-sm-6 form-group">
-				<div>
-	      		<img src="imagen/Agustin-with-Glasses-Rounded.png" alt="Foto Personal" height="225px">
-	    	</div>
-	  		</div>
-	  	</div>
-	  </div>
 	</div>
 
 	<!-- Footer --->
@@ -179,7 +168,7 @@
 		          <a href="https://wa.me/584266908396" class="icono fab fa-whatsapp"></a>
 	        </div>
 	      <div class="col-sm-4" align="right">
-	        <p class="text-sm-right"><b>Agustin Guanipa</b></p>
+	        <p class="text-sm-right"><b>Calculadora IP</b></p>
 	        <p class="text-sm-right">Copyright &copy 2020<br>
 	        </p>
 	      </div>
@@ -191,3 +180,70 @@
 
 </html>
 
+<script>
+
+// Sticky navbar
+// =========================
+            $(document).ready(function () {
+                // Custom function which toggles between sticky class (is-sticky)
+                var stickyToggle = function (sticky, stickyWrapper, scrollElement) {
+                    var stickyHeight = sticky.outerHeight();
+                    var stickyTop = stickyWrapper.offset().top;
+                    if (scrollElement.scrollTop() >= stickyTop) {
+                        stickyWrapper.height(stickyHeight);
+                        sticky.addClass("is-sticky");
+                    }
+                    else {
+                        sticky.removeClass("is-sticky");
+                        stickyWrapper.height('auto');
+                    }
+                };
+
+                // Find all data-toggle="sticky-onscroll" elements
+                $('[data-toggle="sticky-onscroll"]').each(function () {
+                    var sticky = $(this);
+                    var stickyWrapper = $('<div>').addClass('sticky-wrapper'); // insert hidden element to maintain actual top offset on page
+                    sticky.before(stickyWrapper);
+                    sticky.addClass('sticky');
+
+                    // Scroll & resize events
+                    $(window).on('scroll.sticky-onscroll resize.sticky-onscroll', function () {
+                        stickyToggle(sticky, stickyWrapper, $(this));
+                    });
+
+                    // On page load
+                    stickyToggle(sticky, stickyWrapper, $(window));
+                });
+            });
+
+
+// Scrolling Effect -----
+
+$(document).ready(function(){
+  // Add scrollspy to <body>
+  $('body').scrollspy({target: ".navbar", offset: 50});   
+
+  // Add smooth scrolling on all links inside the navbar
+  $("#navbarNavDropdown a").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    }  // End if
+  });
+});
+
+</script>

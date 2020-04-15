@@ -7,8 +7,8 @@
 	margin-bottom: 0px;
 }
 
-#fondo_sobre_mi{
-	background-image: url("../imagen/fondo-desk.jpg");
+#fondo_info{
+	background-image: url("../imagen/background-1.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	margin-bottom: 0px;
@@ -42,13 +42,13 @@ background: linear-gradient(90deg, rgba(56,176,222,1) 0%, rgba(66,136,255,1) 50%
 
 .titulo{
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 20px;
+	font-size: 16px;
 	font-weight: bold;
 }
 
 .contenido{
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .pie{
@@ -106,4 +106,13 @@ background: linear-gradient(90deg, rgba(56,176,222,1) 0%, rgba(66,136,255,1) 50%
 .noticia-detalle{
   padding-top: 30px;
   padding-bottom: 50px;
+}
+
+.sticky.is-sticky {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
 }

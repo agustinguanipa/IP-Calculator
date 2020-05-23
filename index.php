@@ -12,12 +12,11 @@
 	<!--- CSS --->
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
 	<link rel="stylesheet" type="text/css" href="css/iconos.css">
-	<!--- JS --->
-	<script src="js/galeria.js" type="text/javascript"></script>
+	<!--- AngularJS --->
+	<script src="libs/angularjs/angular.min.js" type="text/javascript"></script>
 	<!--- jQuery --->
   <script src="libs/jquery/jquery-3.4.1.min.js" type="text/javascript"></script>
   <!--- jQuery Validation --->
-  
   <script type="text/javascript" src="libs/jquery-validation-1.19.0/dist/jquery.validate.js"></script>
   <!--- jQuery Mask Plugin --->
   <script type="text/javascript" src="libs/jQuery-Mask-Plugin/dist/jquery.mask.js"></script>
@@ -26,7 +25,6 @@
   <script src="libs/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
   <!--- Bootstrap 4 UI E-Commerce --->
   <script src="libs/bootstrap-ecommerce-uikit/ui-ecommerce/js/bootstrap.bundle.min.js" type="text/javascript"></script>
- 
   <link href="libs/bootstrap-ecommerce-uikit/ui-ecommerce/css/bootstrap.css" rel="stylesheet" type="text/css"/>
   <link href="libs/bootstrap-ecommerce-uikit/ui-ecommerce/fonts/fontawesome/css/fontawesome-all.min.css" type="text/css" rel="stylesheet">
   <link href="libs/bootstrap-ecommerce-uikit/ui-ecommerce/plugins/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -113,42 +111,39 @@
 	  <div class="container" id="section2">
 	  	<h4 style="color: #000000;"><b>Calculadora IP</b></h4>
 	  	<hr class="my-4">
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
-	  	<br>
+	  	
+			<div ng-app='myApp' ng-controller='myCtrl'>
+				<div class="row center"> 
+					<div class="col s12 m12 l12"> 
+						<div class="card">
+							<div class="card-content">
+								<span class="card-title">IP Subnet Calculator</span>
+								<div class="divider"></div><br/>
+								<input ng-model="oct0" type="number" min="0" max="255" style="width:50px"/>.
+			 					<input ng-model="oct1" type="number" min="0" max="255" style="width:50px"/>.
+			 					<input ng-model="oct2" type="number" min="0" max="255" style="width:50px"/>.
+			 					<input ng-model="oct3" type="number" min="0" max="255" style="width:50px"/>/
+			 					<input ng-model="prefix" type="number" min="0" max="32" style="width:50px"/>
+								
+								<br/>
+								Class: {{class()}}<br/> 
+			 					Network Address: {{networkAddress()}}<br/> 
+			 					Subnet Mask: {{subnetMask()}}<br/> 
+			 					IP Binary: {{IPBinary()}}<br/> 
+			 					Network Binary: {{networkBinary}}<br/>
+								Subnet Binary: {{subnetBinary()}}<br/> 
+			 					Network Bits: {{prefix}}<br/> 
+			 					Host Bits: {{32-prefix}}<br/> 
+			 					Subnet Bits: {{subnetBits()}}<br/>
+								Total Subnets: {{totalSubnets()}}<br/>
+			 					Hosts Per Subnet: {{hostsPerSubnet()}}<br/> 
+			 					Total Hosts on Network: {{hostCount}}<br/> 
+			 					Hosts lost to Subnets: {{hostsLostToSubnets()}} 
+			 				</div> 
+			 			</div> 
+			 		</div> 
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -182,39 +177,180 @@
 
 <script>
 
-// Sticky navbar
+// Calculadora IP
 // =========================
-            $(document).ready(function () {
-                // Custom function which toggles between sticky class (is-sticky)
-                var stickyToggle = function (sticky, stickyWrapper, scrollElement) {
-                    var stickyHeight = sticky.outerHeight();
-                    var stickyTop = stickyWrapper.offset().top;
-                    if (scrollElement.scrollTop() >= stickyTop) {
-                        stickyWrapper.height(stickyHeight);
-                        sticky.addClass("is-sticky");
-                    }
-                    else {
-                        sticky.removeClass("is-sticky");
-                        stickyWrapper.height('auto');
-                    }
-                };
 
-                // Find all data-toggle="sticky-onscroll" elements
-                $('[data-toggle="sticky-onscroll"]').each(function () {
-                    var sticky = $(this);
-                    var stickyWrapper = $('<div>').addClass('sticky-wrapper'); // insert hidden element to maintain actual top offset on page
-                    sticky.before(stickyWrapper);
-                    sticky.addClass('sticky');
+	//returns true if it is, else false
+	if(typeof Number.isInteger === "undefined") Number.prototype.isInteger = function(x) { return x % 1 === 0;};
+	//inserts a string into another string at the specified index
+	String.prototype.insert = function(index, string) {
+	  if(index > 0)
+	    return this.toString().substring(0, index) + string + this.toString().substring(index, this.toString().length);
+	  else
+	    return string + this.toString();
+	};
+	//repeats a string 'x' times
+	if(typeof String.repeat === "undefined") {
+		String.prototype.repeat = function(x) {
+			var temp = "";
+			for(var i=0;i<x;i++) temp += this.toString();
+			return temp;
+		};
+	}
+	//returns true if the string starts with said string, else false
+	if(typeof String.startsWith === "undefined") {
+		String.prototype.startsWith = function(str) {
+			if(this.toString().substring(0,str.length) === str) return true;
+			else return false;
+		};
+	}
+	//returns true if the string ends with said string, else false
+	if(typeof String.endsWith === "undefined") {
+		String.prototype.endsWith = function(str) {
+			if(this.toString().substring(this.toString().length - str.length, this.toString().length) === str) return true;
+			else return false;
+		};
+	}
+	//returns true if the string has said string in it, else false
+	if(typeof String.includes === "undefined") {
+		String.prototype.includes = function(str) {
+			if(this.toString().indexOf(str) >= 0) return true;
+			else return false;
+		};
+	}
+	Number.prototype.intToBinary = function() {
+		var binary = parseInt(this, 10).toString(2);
+		return "0".repeat(8 - binary.length) + binary;
+	};
+	String.prototype.binaryToInt = function() {
+		return parseInt(this.toString(), 2);
+	};
+	function intToBinary(int){
+	    var binStr = parseInt(int, 10).toString(2);
+		binStr = "0".repeat(8 - binStr.length) + binStr;
+		return binStr;
+	}
+	function binaryToInt(bin) {
+		return parseInt(bin, 2);
+	}
+	var decToHex = function(dec) {
+		return "0".repeat(2-(dec).toString(16).length) + (dec).toString(16);
+	};
 
-                    // Scroll & resize events
-                    $(window).on('scroll.sticky-onscroll resize.sticky-onscroll', function () {
-                        stickyToggle(sticky, stickyWrapper, $(this));
-                    });
+	var app = angular.module("myApp", []);
+	app.controller("myCtrl", function($scope){
+		$scope.oct0 = 0;
+		$scope.oct1 = 0;
+		$scope.oct2 = 0;
+		$scope.oct3 = 0;
+		$scope.prefix = 24;
+		
+		$scope.class = function() {
+			if($scope.prefix >= 8 && $scope.prefix <= 15) return "A";
+			else if($scope.prefix >= 16 && $scope.prefix <= 23) return "B";
+			else if($scope.prefix >= 24 && $scope.prefix <= 30) return "C";
+			else return "";
+		};
+		
+		$scope.IPBinary = function() {
+			var ipBin = [
+				intToBinary($scope.oct0 ? $scope.oct0 : 0),
+				intToBinary($scope.oct1 ? $scope.oct1 : 0),
+				intToBinary($scope.oct2 ? $scope.oct2 : 0),
+				intToBinary($scope.oct3 ? $scope.oct3 : 0)
+			];
+			return ipBin.join(".");
+		};
+		
+		$scope.subnetBits = function() {
+			if($scope.class() == "A") return $scope.prefix - 8;
+			else if($scope.class() == "B") return $scope.prefix - 16;
+			else if($scope.class() == "C") return $scope.prefix - 24;
+			else return 0;
+		};
+		
+		$scope.subnetMask = function() {
+			var mask = "1".repeat($scope.prefix);
+			mask += "0".repeat(32-mask.length);
+			mask = mask.replace(/\s*[01]{8}\s*/g, function(mask) {return parseInt(mask, 2).toString() + ".";});
+			return mask.substring(0, mask.length-1);
+		};
+		
+		$scope.subnetBinary = function() {
+			var subnetBin = "1".repeat($scope.prefix);
+			subnetBin += "0".repeat(32 - subnetBin.length);
+			subnetBin = subnetBin.insert(8, ".").insert(17, ".").insert(26, ".");
+			return subnetBin;
+		};
+		
+		$scope.totalSubnets = function() {
+			return Math.pow(2, $scope.subnetBits());
+		};
+		
+		$scope.networkAddress = function() {
+			var netBin = "";
+			for(var i=0;i<35;i++){
+				if($scope.IPBinary()[i] == $scope.subnetBinary()[i]){
+					netBin += $scope.IPBinary()[i];
+				} else {
+					netBin += "0";
+				}
+			}
+			$scope.networkBinary = netBin;
+			var net = netBin.split(".");
+			net[0] = binaryToInt(net[0]);
+			net[1] = binaryToInt(net[1]);
+			net[2] = binaryToInt(net[2]);
+			net[3] = binaryToInt(net[3]);
+			return net.join(".");
+		};
+		
+		$scope.hostsPerSubnet = function() {
+			return Math.pow(2, 32-$scope.prefix) - 2;
+		};
+		
+		$scope.hostsLostToSubnets = function() {
+			$scope.hostCount = (Math.pow(2, 32-$scope.prefix) - 2) * $scope.totalSubnets();
+			if($scope.class() == "A") return (16777214 - $scope.hostCount);
+			else if($scope.class() == "B") return (65534 - $scope.hostCount);
+			else if($scope.class() == "C") return (254 - $scope.hostCount);
+			else return;
+		};
+	});
 
-                    // On page load
-                    stickyToggle(sticky, stickyWrapper, $(window));
-                });
-            });
+// Sticky Navbar
+// =========================
+  $(document).ready(function () {
+      // Custom function which toggles between sticky class (is-sticky)
+      var stickyToggle = function (sticky, stickyWrapper, scrollElement) {
+          var stickyHeight = sticky.outerHeight();
+          var stickyTop = stickyWrapper.offset().top;
+          if (scrollElement.scrollTop() >= stickyTop) {
+              stickyWrapper.height(stickyHeight);
+              sticky.addClass("is-sticky");
+          }
+          else {
+              sticky.removeClass("is-sticky");
+              stickyWrapper.height('auto');
+          }
+      };
+
+      // Find all data-toggle="sticky-onscroll" elements
+      $('[data-toggle="sticky-onscroll"]').each(function () {
+          var sticky = $(this);
+          var stickyWrapper = $('<div>').addClass('sticky-wrapper'); // insert hidden element to maintain actual top offset on page
+          sticky.before(stickyWrapper);
+          sticky.addClass('sticky');
+
+          // Scroll & resize events
+          $(window).on('scroll.sticky-onscroll resize.sticky-onscroll', function () {
+              stickyToggle(sticky, stickyWrapper, $(this));
+          });
+
+          // On page load
+          stickyToggle(sticky, stickyWrapper, $(window));
+      });
+  });
 
 
 // Scrolling Effect -----
@@ -245,5 +381,7 @@ $(document).ready(function(){
     }  // End if
   });
 });
+
+// 
 
 </script>

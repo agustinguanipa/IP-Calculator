@@ -20,6 +20,8 @@
   <script type="text/javascript" src="libs/jquery-validation-1.19.0/dist/jquery.validate.js"></script>
   <!--- jQuery Mask Plugin --->
   <script type="text/javascript" src="libs/jQuery-Mask-Plugin/dist/jquery.mask.js"></script>
+  <!--- JS --->
+	<script src="validacion.js" type="text/javascript"></script>
 	<!--- Bootstrap 4 --->
   <link rel="stylesheet" href="libs/bootstrap-4.1.3-dist/css/bootstrap.min.css"/>
   <script src="libs/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
@@ -115,37 +117,57 @@
 			<div ng-app='myApp' ng-controller='myCtrl'>
 				<div class="row center"> 
 					<div class="col s12 m12 l12"> 
-						<div class="card">
-							<div class="card-content">
-								<span class="card-title">IP Subnet Calculator</span>
-								<div class="divider"></div><br/>
-								<input ng-model="oct0" type="number" min="0" max="255" style="width:50px"/>.
-			 					<input ng-model="oct1" type="number" min="0" max="255" style="width:50px"/>.
+						<div class="card" style="width: 54 rem;">
+							<div class="card-header">
+						    <b>Dirección IP y Máscara de Red</b>
+						  </div>
+						  <form name="calculadora" id="calculadora"class="justify-content-center" align="center" enctype="multipart/form-data" action="" method="" >
+						  	
+						  
+						  <div class="card-body" id="calculadora">
+						    <input ng-model="oct0" id="oct0" type="text" min="0" max="255" style="width:50px" maxlength="3" />.
+			 					<input ng-model="oct1" type="number" min="0" max="255" style="width:50px" maxlength="3" />.
 			 					<input ng-model="oct2" type="number" min="0" max="255" style="width:50px"/>.
 			 					<input ng-model="oct3" type="number" min="0" max="255" style="width:50px"/>/
 			 					<input ng-model="prefix" type="number" min="0" max="32" style="width:50px"/>
-								
-								<br/>
-								Class: {{class()}}<br/> 
-			 					Network Address: {{networkAddress()}}<br/> 
-			 					Subnet Mask: {{subnetMask()}}<br/> 
-			 					IP Binary: {{IPBinary()}}<br/> 
-			 					Network Binary: {{networkBinary}}<br/>
-								Subnet Binary: {{subnetBinary()}}<br/> 
-			 					Network Bits: {{prefix}}<br/> 
-			 					Host Bits: {{32-prefix}}<br/> 
-			 					Subnet Bits: {{subnetBits()}}<br/>
-								Total Subnets: {{totalSubnets()}}<br/>
-			 					Hosts Per Subnet: {{hostsPerSubnet()}}<br/> 
-			 					Total Hosts on Network: {{hostCount}}<br/> 
-			 					Hosts lost to Subnets: {{hostsLostToSubnets()}} 
-			 				</div> 
-			 			</div> 
-			 		</div> 
+						  </div>
+						  </form>
+						</div>
+						<br>
+						<div class="card-deck">
+							<div class="card" style="width: 18rem;">
+							  <ul class="list-group list-group-flush">
+							    <li class="list-group-item" style="font-size: 20px;"><b>Clase: <b style="color: #0F80FF;">{{class()}}</b></b><br/> </li>
+							    <li class="list-group-item"><b>Dirección de Red:</b> {{networkAddress()}}<br/></li>
+							    <li class="list-group-item"><b>Máscara de Subred:</b> {{subnetMask()}}</li>
+							  </ul>
+							</div>
+						
+						<div class="card" style="width: 18rem;">
+						  <ul class="list-group list-group-flush">
+						    <li class="list-group-item"><b>IP en Binario:</b> <br>{{IPBinary()}}<br/><br/> </li>
+						    <li class="list-group-item"><b>Red en Binario:</b> <br> {{networkBinary}}<br/></li>
+						    <li class="list-group-item"><b>Subred en Binario:</b> <br>{{subnetBinary()}}<br/> </li>
+						  </ul>
+						</div>
+						
+						<div class="card" style="width: 18rem;">
+						  <ul class="list-group list-group-flush">
+						    <li class="list-group-item"><b>Network Bits:</b> {{prefix}}<br/></li>
+						    <li class="list-group-item"><b>Host Bits:</b> {{32-prefix}}<br/></li>
+						    <li class="list-group-item"><b>Subnet Bits:</b> {{subnetBits()}}<br/> </li>
+						    <li class="list-group-item"><b>Total de Subredes:</b> {{totalSubnets()}}<br/> </li>
+						    <li class="list-group-item"><b>Hosts por Subred:</b> {{hostsPerSubnet()}}<br/> </li>
+						    <li class="list-group-item"><b>Total de Host en la Red:</b> {{hostCount}}<br/> </li>
+						    <li class="list-group-item"><b>Host Perdidos por Subred:</b> {{hostsLostToSubnets()}}<br/> </li>
+						  </ul>
+						</div>
+	 				</div> 
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 
 	<!-- Footer --->
 

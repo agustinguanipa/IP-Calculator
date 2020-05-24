@@ -5,15 +5,53 @@ $( document ).ready( function () {
     rules: {
       oct0: {
         required: true,
+        number: true,
+        max: 255,
+        min: 0
+      },
+      oct1: {
+        required: true,
+        maxlength: 3
+      },
+      oct2: {
+        required: true,
+        minlength: 1,
+        maxlength: 3
+      },
+      oct3: {
+        required: true,
+        minlength: 1,
+        maxlength: 3
+      },
+      prefix: {
+        required: true,
         number: false,
-        minlength: 3
+        minlength: 1,
+        maxlength: 2
       },
     },
 
     messages: {
       oct0: {
         required: "Ingrese su Primer Nombre",
-        lettersonly: "Tu Nombre solo debe contener letras sin espacios",
+        max: "Ingrese Valor menos a 255",
+        min: "Ingrese Valor menos a 255"
+      },
+      oct1: {
+        required: "Ingrese su Primer Nombre",
+        minlength: "Tu Nombre debe contener al menos 2 caracteres",
+        maxlength: "Tu Nombre debe contener al menos 2 caracteres"
+      },
+      oct2: {
+        required: "Ingrese su Primer Nombre",
+        minlength: "Tu Nombre debe contener al menos 2 caracteres"
+      },
+      oct3: {
+        required: "Ingrese su Primer Nombre",
+        minlength: "Tu Nombre debe contener al menos 2 caracteres"
+      },
+      prefix: {
+        required: "Ingrese su Primer Nombre",
         minlength: "Tu Nombre debe contener al menos 2 caracteres"
       },
     },

@@ -99,9 +99,8 @@
 	  			<p class="titulo">Instrucciones</p>
 		     	<p class="contenido">
 		     		<ul class="text-left">
-			     		<li>Introduce una dirección IP (IPv4) junto con la máscara de red (en formato decimal o mediante una longitud de prefijo).</li>
-			     		<li>Presiona Calcular.</li>
-			     		<li>Obtendrás la dirección de la subred a la que pertenece dicha dirección IP, la dirección de broadcast de dicha subred, la primera y última dirección IP asignable, y el número total de direcciones IP asignables en la subred.</li>
+			     		<li>Introduce una dirección IP (IPv4) junto con la máscara de red.</li>
+			     		<li>Automáticamente te indicara los resultados.</li>
 			     	</ul>
 		    	</p>
 	  		</div>
@@ -121,16 +120,14 @@
 							<div class="card-header">
 						    <b>Dirección IP y Máscara de Red</b>
 						  </div>
-						  <form name="calculadora" id="calculadora"class="justify-content-center" align="center" enctype="multipart/form-data" action="" method="" >
-						  	
-						  
-						  <div class="card-body" id="calculadora">
-						    <input ng-model="oct0" id="oct0" type="text" min="0" max="255" style="width:50px" maxlength="3" />.
-			 					<input ng-model="oct1" type="number" min="0" max="255" style="width:50px" maxlength="3" />.
-			 					<input ng-model="oct2" type="number" min="0" max="255" style="width:50px"/>.
-			 					<input ng-model="oct3" type="number" min="0" max="255" style="width:50px"/>/
-			 					<input ng-model="prefix" type="number" min="0" max="32" style="width:50px"/>
-						  </div>
+						  <form name="calculadora" id="calculadora" class="justify-content-center" align="center" enctype="multipart/form-data" action="" method="" >
+							  <div class="card-body" id="calculadora">
+							    <input ng-model="oct0" id="oct0" type="number" min="0" max="255" style="width:50px" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "3"/>.
+				 					<input ng-model="oct1" id="oct1" type="number" min="0" max="255" style="width:50px" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "3"/>.
+				 					<input ng-model="oct2" id="oct2" type="number" min="0" max="255" style="width:50px" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "3"/>.
+				 					<input ng-model="oct3" id="oct3" type="number" min="0" max="255" style="width:50px" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "3"/>/
+				 					<input ng-model="prefix" id="prefix" type="number" min="0" max="32" style="width:50px" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "2"/>
+							  </div>
 						  </form>
 						</div>
 						<br>
@@ -175,7 +172,7 @@
 	  <div class="container">
 	    <section class="footer-bottom row">
 	      <div class="col-sm-4" align="left"> 
-	        <p><b>Diseñado y Desarrollado por: </b><br><a href="https://agustinguanipa.epizy.com/" title="Agustin Guanipa">Carlos Agustin Guanipa Alvarez</a></p>
+	        <p><b>Diseñado y Desarrollado por: </b><br>Carlos Agustin Guanipa Alvarez</p>
 	      </div>
 	      <div class="col-sm-4 form-group" align="center">
 	          <p class="pie"><b>Redes Sociales</b></p>
@@ -405,5 +402,95 @@ $(document).ready(function(){
 });
 
 // 
+
+$( document ).ready( function () {
+  $( "#calculadora" ).validate( {
+    rules: {
+      oct0: {
+        required: true,
+        number: true,
+        max: 255,
+        min: 0
+      },
+      oct1: {
+        required: true,
+        maxlength: 3
+      },
+      oct2: {
+        required: true,
+        minlength: 1,
+        maxlength: 3
+      },
+      oct3: {
+        required: true,
+        minlength: 1,
+        maxlength: 3
+      },
+      prefix: {
+        required: true,
+        number: false,
+        minlength: 1,
+        maxlength: 2
+      },
+    },
+
+    messages: {
+      oct0: {
+        required: "Ingrese su Primer Nombre",
+        max: "Ingrese Valor menos a 255",
+        min: "Ingrese Valor menos a 255"
+      },
+      oct1: {
+        required: "Ingrese su Primer Nombre",
+        minlength: "Tu Nombre debe contener al menos 2 caracteres",
+        maxlength: "Tu Nombre debe contener al menos 2 caracteres"
+      },
+      oct2: {
+        required: "Ingrese su Primer Nombre",
+        minlength: "Tu Nombre debe contener al menos 2 caracteres"
+      },
+      oct3: {
+        required: "Ingrese su Primer Nombre",
+        minlength: "Tu Nombre debe contener al menos 2 caracteres"
+      },
+      prefix: {
+        required: "Ingrese su Primer Nombre",
+        minlength: "Tu Nombre debe contener al menos 2 caracteres"
+      },
+    },
+
+    errorElement: "em",
+    errorPlacement: function ( error, element ) {
+      // Add the `invalid-feedback` class to the error element
+      error.addClass( "invalid-feedback" );
+
+      if ( element.prop( "type" ) === "checkbox" ) {
+        error.insertAfter( element.next( "label" ) );
+      } else {
+        error.insertAfter( element );
+      }
+    },
+    highlight: function ( element, errorClass, validClass ) {
+      $( element ).addClass( "is-invalid" ).removeClass( "is-valid" );
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $( element ).addClass( "is-valid" ).removeClass( "is-invalid" );
+    }
+  } );
+
+} );
+
+
+jQuery.validator.addMethod("lettersonly", function(value, element) {
+  return this.optional(element) || /^[A-Z^\s]+$/i.test(value);
+}, "Letters only please"); 
+
+/* Masks */
+
+$('.telef-mask').mask('(0000) 000 0000');
+$('.pesoo-mask').mask('000000000000000.00 KG', {reverse: true});
+$('.preci-mask').mask('000000000000000.00', {reverse: true});
+$('.taman-mask').mask('###.00 x ###.00 x ###.00', {reverse: false});
+
 
 </script>
